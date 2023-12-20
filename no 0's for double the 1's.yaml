@@ -1,0 +1,48 @@
+name: no 0's for double the 1's
+source code: |
+  input: '0000011'
+  blank: ' '
+  start state: q1
+  table:
+    q1:
+      X: R
+      Y: R
+      1: {R: accept}
+      0: {write: X, R: q2}
+      ' ': {R: reject}
+    
+    reject:
+      
+    
+    q2:
+      0: {write: X, R: q3}
+      1: {R: accept}
+      ' ': {R: accept}
+      X: {R: accept}
+      Y: {R: accept}
+    
+    accept:
+      
+    
+    q3:
+      0: R
+      Y: R
+      1: {write: Y, L: q4}
+      ' ': {R: accept}
+      X: R
+    
+    q4:
+      Y: L
+      0: L
+      X: L
+      ' ': {R: q1}
+    
+
+      
+positions:
+  q1: {x: 165, y: 343.91}
+  reject: {x: 307.3, y: 430.69}
+  q2: {x: 286.28, y: 97.44}
+  accept: {x: 420.9, y: 238.13}
+  q3: {x: 539.92, y: 134.13}
+  q4: {x: 667.63, y: 346.92}
